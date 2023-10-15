@@ -1,0 +1,1 @@
+node bin/create-from-template.js $1

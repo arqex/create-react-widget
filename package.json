@@ -1,0 +1,19 @@
+{
+  "name": "create-react-widget",
+  "version": "0.0.1",
+  "description": "Scaffold a web widget project with react and typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "create-react-widget": "bin/create-react-widget.sh"
+  },
+  "author": "Javier Marquez @arqex",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^11.1.1",
+    "inquirer": "^9.2.11"
+  },
+  "type": "module"
+}
