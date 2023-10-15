@@ -1,8 +1,7 @@
 create-react-widget
 -------------------
 
-A small utility to bootstrap micro-frontend projects in React and Typescript. If you are looking for a way of embedding your React application in another website as a widget, this is the tool for you.
-
+A small utility to bootstrap micro-frontend projects in React and Typescript. If you are looking for a way of embedding your React application in another website as a widget, this is the tool for you. Give it some love! 🌟
 
 ## Usage
 
