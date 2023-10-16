@@ -1,0 +1,60 @@
+.widget {
+  all: initial;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  display: block;
+  background-color: antiquewhite;
+  overflow: hidden;
+  border-radius: 16px;
+  color: #533;
+  align-items: center;
+  padding: 16px;
+}
+
+.logos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #5f4d15aa);
+}
+
+.react {
+  animation: "logo-spin" infinite 20s linear;
+}
+
+.title {
+  text-align: center;
+  margin-top: 16px;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+  text-align: center;
+  background-color: #1001;
+  border-radius: 8px;
+}

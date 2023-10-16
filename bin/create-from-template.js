@@ -4,6 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 let projectName = process.argv[2];
+let overwrite = process.argv[3] === '-y';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const TEMPLATE_PATH = path.resolve(__dirname, '../template');
 
@@ -27,7 +28,7 @@ const questions = [
     name: 'overwrite',
     message: 'The folder already exists. Overwrite existing files?',
     default: false,
-    when: () => pathExits(projectName)
+    when: () => pathExits(projectName) && !overwrite
   }
 ];
 
