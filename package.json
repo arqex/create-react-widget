@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npx playwright test",
     "test:ui": "npx playwright test --ui",
-    "generate:templates": "node ./scripts/generate-templates.js"
+    "generate:templates": "node ./scripts/generate-templates.js",
+    "devtestsetup": "sh ./scripts/dev-tests-setup.sh"
   },
   "bin": {
     "create-react-widget": "bin/create-react-widget.sh"
