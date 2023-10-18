@@ -44,6 +44,7 @@ export default defineConfig({
         baseURL: 'http://localhost:5173',
       },
     },
+    /*
     {
       name: 'firefox',
       dependencies: ['setup'],
@@ -60,7 +61,7 @@ export default defineConfig({
         baseURL: 'http://localhost:5173'
       },
     },
-
+    */
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',

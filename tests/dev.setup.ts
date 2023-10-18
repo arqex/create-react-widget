@@ -12,6 +12,8 @@ function launch() {
   const child = exec('./scripts/dev-tests-setup.sh');
   return new Promise<void>((resolve) => {
     child.stdout?.on('data', (data) => {
+      // output stdout to console
+      console.log(data);
       if(data.includes('ready')){
         resolve();
       }
