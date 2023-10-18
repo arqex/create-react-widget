@@ -13,7 +13,7 @@ function Widget() {
           <img data-testid="react" src={reactLogo} className={styles.logo + ' ' + styles.react} alt="React logo" />
         </a>
       </div>
-      <h1 className={styles.title}>create-react-widget</h1>
+      <h1 data-testid="title" className={styles.title}>create-react-widget</h1>
       <div className={styles.card}>
         <p>
           Edit <code>src/Widget.tsx</code> and save to test HMR
