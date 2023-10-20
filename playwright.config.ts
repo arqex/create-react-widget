@@ -39,7 +39,6 @@ export default defineConfig({
         baseURL: 'http://localhost:5173',
       },
     },
-  ]
     /*
     {
       name: 'firefox',
@@ -55,13 +54,12 @@ export default defineConfig({
         ...devices['Desktop Safari'],
         baseURL: 'http://localhost:5173'
       },
-    },
+    }, */
   ],
 
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://127.0.0.1:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  webServer: {
+    command: 'cd test-widget && npm run dev',
+    url: 'http://localhost:5173',
+    reuseExistingServer: !process.env.CI,
+  },
 });

@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react-swc'
 import { viteExternalsPlugin } from 'vite-plugin-externals'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 import widgetConfig from './widget.config'
-import { VitePluginWidgetPreHTML, VitePluginWidgetPostHTML, VitePluginWidgetInjector } from './injection/VitePlugins'
+import { VitePluginWidgetPreHTML, VitePluginWidgetPostHTML, VitePluginWidgetInjector, VitePreloadReplacer } from './injection/VitePlugins'
 
 // https://vitejs.dev/config/
 // @ts-ignore
@@ -15,14 +15,13 @@ function getProductionConfig() {
   return {
     plugins: [
       react(),
-      VitePluginWidgetInjector('injector.build.ts', widgetConfig),
+      VitePluginWidgetInjector(true, widgetConfig),
       widgetConfig.externalReact && viteExternalsPlugin({
         react: 'React',
         'react-dom': 'ReactDOM',
       }),
       cssInjectedByJsPlugin({
         injectCodeFunction: (cssCode) => {
-          // @ts-ignore stylesUpdater 
           window.setWidgetStyles = (node: HTMLElement) => {
             var styleTag = document.createElement('style');
             styleTag.innerHTML = cssCode;
@@ -31,7 +30,8 @@ function getProductionConfig() {
         }
       }),
       VitePluginWidgetPreHTML(),
-      VitePluginWidgetPostHTML()
+      VitePluginWidgetPostHTML(),
+      VitePreloadReplacer(),
     ],
     build: {
       rollupOptions: {
@@ -47,7 +47,7 @@ function getDevConfig() {
   return {
     plugins: [
       react(),
-      VitePluginWidgetInjector('injector.dev.ts', widgetConfig),
+      VitePluginWidgetInjector(false, widgetConfig),
     ]
   }
 }

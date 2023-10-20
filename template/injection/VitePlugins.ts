@@ -1,4 +1,5 @@
 import { WidgetConfig } from "./types";
+// import fs from 'fs';
 
 // Removes unnecesary parts of the dev index.html file
 export const VitePluginWidgetPreHTML = () => ({
@@ -26,15 +27,35 @@ export const VitePluginWidgetPostHTML = () => ({
   }
 });
 
-export const VitePluginWidgetInjector = (injectorFileName: string, options: WidgetConfig) => ({
+export const VitePluginWidgetInjector = (isProductionBuild: boolean, options: WidgetConfig) => ({
   name: 'widget-injector',
   // @ts-ignore
   transform( src: string, id: string ) {
+    let injectorFileName = 'injector.dev.ts';
+    if( isProductionBuild ) {
+      injectorFileName = options.externalReact ? 'injector.build-external.ts' : 'injector.build.ts';
+    }
+    
     if( id.match(/\/injection\/injector.ts$/) ) {
       return `
 import {inject} from './${injectorFileName}';
 inject(${JSON.stringify(options)});
 `
     }
+  }
+});
+
+export const VitePreloadReplacer = () => ({
+  name: 'widget-preload-replacer',
+  // @ts-ignore
+  generateBundle(options: any, files: any) {
+    const fileName = options.entryFileNames;
+    const file = files[fileName];
+
+    const imp = file.code.match(/import\("(.*?)"/);
+    if( imp ){
+      file.code = file.code.replace('#placeholder#', imp[1]);
+    }
+    console.log('generateBundle', file);
   }
 });

@@ -3,6 +3,7 @@ import viteLogo from '/assets/vite.svg'
 import styles from './Widget.module.css'
 
 function Widget() {
+  console.log('Hola');
   return (
     <div className={styles.widget}>
       <div className={styles.logos}>

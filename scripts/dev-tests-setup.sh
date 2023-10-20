@@ -6,3 +6,4 @@ npx create-react-widget test-widget -y
 cd test-widget
 echo "Running vite"
 npm run dev &
+npm run build:serve &
