@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "build:serve": "tsc && vite build && http-server dist -p 3000",
+    "build:serve": "tsc && BUILD_TEST=true vite build && http-server dist -p 3000",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react-swc'
 import { viteExternalsPlugin } from 'vite-plugin-externals'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 import widgetConfig from './widget.config'
-import { VitePluginWidgetPreHTML, VitePluginWidgetPostHTML, VitePluginWidgetInjector, VitePreloadReplacer } from './injection/VitePlugins'
+import { VitePluginWidgetPreHTML, VitePluginWidgetPostHTML, VitePluginWidgetInjector, VitePreloadReplacer, ViteCopyReact } from './injection/VitePlugins'
 
 // https://vitejs.dev/config/
 // @ts-ignore
@@ -16,7 +16,7 @@ function getProductionConfig() {
     plugins: [
       react(),
       VitePluginWidgetInjector(true, widgetConfig),
-      widgetConfig.externalReact && viteExternalsPlugin({
+      widgetConfig.externalizeURL && viteExternalsPlugin({
         react: 'React',
         'react-dom': 'ReactDOM',
       }),
@@ -32,6 +32,7 @@ function getProductionConfig() {
       VitePluginWidgetPreHTML(),
       VitePluginWidgetPostHTML(),
       VitePreloadReplacer(),
+      widgetConfig.externalizeURL && ViteCopyReact()
     ],
     build: {
       rollupOptions: {

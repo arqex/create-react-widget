@@ -1,16 +1,15 @@
-import { WidgetConfig } from './types';
 import {mountWidget} from './mountWidget';
 import {setStylesNode} from './stylesUpdater.build';
 
 
-export async function inject(config: WidgetConfig) {
-  console.log('Injecting with config', config);
-
+export async function inject() {
+  // @ts-ignore
+  const assetsURL = document.currentScript.src.split('/').slice(0, -1).join('/') + '/assets';
   if( !window.React ) {
     window.widgetReactPromise = window.widgetReactPromise || Promise.all([
-      loadScript(config.externalReact?.react ?? 'https://unpkg.com/react/umd/react.production.min.js'),
-      loadScript(config.externalReact?.reactDOM ?? 'https://unpkg.com/react-dom/umd/react-dom.production.min.js'),
-      preload("#placeholder#")
+      loadScript(`${assetsURL}/react.production.min.js`),
+      loadScript(`${assetsURL}/react-dom.production.min.js`),
+      preload(`${assetsURL}/#placeholder#`),
     ]);
     await window.widgetReactPromise;
   }

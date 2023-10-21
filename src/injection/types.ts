@@ -12,6 +12,11 @@ export interface ExternalReactConfig {
 }
 
 export interface WidgetConfig {
-  externalReact?: ExternalReactConfig;
+  externalizeURL?: string;
   buildFilename?: string;
+}
+
+export interface InjectionOptions {
+  externalizeURL?: string;
+  isBuildTest?: boolean;
 }
